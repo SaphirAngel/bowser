@@ -5,7 +5,8 @@
  */
 
 !function (root, name, definition) {
-  if (typeof module != 'undefined' && module.exports) module.exports = definition()
+  var isElectron = window && window.process && window.process.type;
+  if (typeof module != 'undefined' && module.exports && !isElectron) module.exports = definition()
   else if (typeof define == 'function' && define.amd) define(name, definition)
   else root[name] = definition()
 }(this, 'bowser', function () {
